@@ -11,3 +11,7 @@
 #### 3.1
 
 - Tailwind 테스트
+
+#### 3.2
+
+- Card Component 제작 테스트
