@@ -22,6 +22,7 @@
 
 - Modifiers : 다크모드 구현 테스트
 
-#### 3.4
+#### 3.4.1
 
-- Responsive : input, button 구현 테스트
+- Tailwind Variables : input, button 구현 테스트
+  - 커밋 정정
