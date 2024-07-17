@@ -30,3 +30,7 @@
 #### 3.5
 
 - Responsive Modifiers : 반응형 CSS 구현 테스트
+
+#### 3.6
+
+- Form Modifiers : 그라디언트, 유효성검사 CSS 구현 테스트
