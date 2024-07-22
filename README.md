@@ -48,3 +48,7 @@
 #### 3.9
 
 - Group Modifiers : 그룹 선택
+
+#### 3.10
+
+- JIT(Just In Time compiler) : Tailwind 이해, theme extend
