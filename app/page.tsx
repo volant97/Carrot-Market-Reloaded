@@ -13,9 +13,14 @@ export default function Home() {
               <span className="z-10">{index + 1}</span>
               <div className="absolute size-6 bg-red-500 rounded-full animate-ping" />
             </div>
-            <span className="hidden group-focus-within:block">
-              자세한 내용을 작성해주세요.
-            </span>
+            <span className="btn">테스트</span>
+            <a
+              href="https://www.naver.com/"
+              target="_blank"
+              className="text-bigger-hello"
+            >
+              테스트
+            </a>
           </div>
         ))}
       </div>

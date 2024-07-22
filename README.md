@@ -52,3 +52,7 @@
 #### 3.10
 
 - JIT(Just In Time compiler) : Tailwind 이해, theme extend
+
+#### 3.11
+
+- Directives : global css apply, layer base, layer utilities, layer components
