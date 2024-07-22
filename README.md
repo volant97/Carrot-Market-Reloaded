@@ -44,3 +44,7 @@
 #### 3.8
 
 - Lists and Animations : 리스트 선택, 애니메이션
+
+#### 3.9
+
+- Group Modifiers : 그룹 선택
