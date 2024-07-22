@@ -40,3 +40,7 @@
 #### 3.7
 
 - State Modifiers : class 선택, 가상 class
+
+#### 3.8
+
+- Lists and Animations : 리스트 선택, 애니메이션
