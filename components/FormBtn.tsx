@@ -3,7 +3,7 @@ interface Props {
   text: string;
 }
 
-export default function FormButton({ loading, text }: Props) {
+export default function FormBtn({ loading, text }: Props) {
   return (
     <button
       disabled={loading}

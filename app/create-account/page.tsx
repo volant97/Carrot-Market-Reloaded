@@ -1,14 +1,13 @@
-import FormButton from "@/components/FormButton";
+import FormBtn from "@/components/FormBtn";
 import FormInput from "@/components/FormInput";
-import { ChatBubbleOvalLeftEllipsisIcon } from "@heroicons/react/24/solid";
-import Link from "next/link";
+import SocialLogin from "@/components/SocialLogin";
 
 export default function page() {
   return (
     <div className="flex flex-col gap-10 px-6 py-8">
       <div className="flex flex-col gap-2 *:font-medium">
-        <h1 className="text-2xl">안녕하세요</h1>
-        <h2 className="text-xl">당근을 시작하기 위해서 정보를 입력해주세요.</h2>
+        <h1 className="text-2xl">반가워요!</h1>
+        <h2 className="text-xl">당근은 당신과 함께하고 싶어요.</h2>
       </div>
       <form className="flex flex-col gap-3">
         <FormInput type="text" placeholder="닉네임" required errors={[]} />
@@ -25,20 +24,9 @@ export default function page() {
           required
           errors={[]}
         />
-        <FormButton loading={false} text="시작하기" />
+        <FormBtn loading={false} text="시작하기" />
       </form>
-      <div className="w-full h-px bg-neutral-500" />
-      <div>
-        <Link
-          href={"/sms"}
-          className="primary-btn flex items-center justify-center gap-2 h-10"
-        >
-          <span>
-            <ChatBubbleOvalLeftEllipsisIcon className="size-6" />
-          </span>
-          <span>SNS로 시작하기</span>
-        </Link>
-      </div>
+      <SocialLogin />
     </div>
   );
 }
