@@ -1,32 +1,30 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
-    <main className="flex items-center justify-center h-screen p-5 bg-gray-100">
-      <div className="flex flex-col w-full max-w-screen-md gap-2 p-5 bg-white shadow-lg rounded-3xl">
-        {["Nico", "Me", "You", "Tom"].map((person, index) => (
-          <div className="flex items-center gap-5 p-2.5 group" key={index}>
-            <input className="w-30 h-6 bg-test-color" />
-            <div className="size-10 bg-blue-400 rounded-test-rounded" />
-            <span className="text-lg font-medium group-odd:text-red-500 group-hover:text-blue-500 group-focus-within:bg-yellow-400">
-              {person}
-            </span>
-            <div className="relative flex items-center justify-center size-6 bg-red-500 text-white rounded-full">
-              <span className="z-10">{index + 1}</span>
-              <div className="absolute size-6 bg-red-500 rounded-full animate-ping" />
-            </div>
-            <span className="btn">테스트</span>
-            <button className="btn btn-outline btn-success bg-white">
-              daisyUI
-            </button>
-            <a
-              href="https://www.naver.com/"
-              target="_blank"
-              className="text-bigger-hello"
-            >
-              테스트
-            </a>
-          </div>
-        ))}
+    <div className="flex flex-col items-center justify-between min-h-screen">
+      <div className="flex flex-col items-center gap-2 my-auto *:font-medium">
+        <span className="text-9xl">🥕</span>
+        <h1 className="text-4xl">당근</h1>
+        <h2 className="text-2xl">당근 마켓에 어서오세요!</h2>
       </div>
-    </main>
+      <div className="flex flex-col items-center gap-3 w-full p-6">
+        <Link
+          href={"/create-account"}
+          className="w-full bg-orange-500 text-white text-lg text-center font-medium py-2.5 rounded-md hover:bg-orange-400"
+        >
+          시작하기
+        </Link>
+        <div className="flex gap-2">
+          <span>이미 계정이 있나요?</span>
+          <Link
+            href={"/login"}
+            className="hover:underline hover:underline-offset-2"
+          >
+            로그인
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }
