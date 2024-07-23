@@ -77,3 +77,7 @@
 
 - Create Account Screen : 회원등록 page 제작
 - heroicons 설치
+
+#### 4.2
+
+- Form Components : form input, form btn 컴포넌트 제작
