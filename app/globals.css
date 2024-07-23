@@ -15,7 +15,7 @@
 }
 
 @layer components {
-  .btn {
-    @apply flex justify-center items-center w-28 h-10 bg-black text-white rounded-test-rounded;
+  .primary-btn {
+    @apply w-full bg-orange-500 hover:bg-orange-400 text-white text-center font-semibold rounded-md transition-colors;
   }
 }

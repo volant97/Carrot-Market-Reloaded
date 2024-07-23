@@ -72,3 +72,8 @@
 #### 4.0
 
 - Home Screen : Home page 제작
+
+#### 4.1
+
+- Create Account Screen : 회원등록 page 제작
+- heroicons 설치
