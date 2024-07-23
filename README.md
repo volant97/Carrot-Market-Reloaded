@@ -64,3 +64,7 @@
 - Plugins : tailwind plugin 작동방식
 - daisyUI 설치
 - tailwindcss forms 설치
+
+#### 3.13
+
+- Conclusions
