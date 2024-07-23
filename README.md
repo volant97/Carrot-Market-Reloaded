@@ -93,3 +93,7 @@
 #### 5.1
 
 - Server Actions : 현재의 API 통신 방법 (NextJS Server Actions를 활용한 API 통신)
+
+#### 5.2
+
+- useFormStatus : pending을 활용하여 로딩중 구현

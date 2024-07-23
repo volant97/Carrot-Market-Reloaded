@@ -5,6 +5,7 @@ import SocialLogin from "@/components/SocialLogin";
 export default function page() {
   const formActionHandler = async (data: FormData) => {
     "use server";
+    await new Promise((r) => setTimeout(r, 3000));
     console.log("서버에서 작동중");
     console.log(data.get("email"), data.get("password"));
   };
@@ -30,7 +31,7 @@ export default function page() {
           required
           errors={[]}
         />
-        <FormBtn loading={false} text="로그인" />
+        <FormBtn text="로그인" />
       </form>
       <SocialLogin />
     </div>
