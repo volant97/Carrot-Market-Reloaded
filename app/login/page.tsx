@@ -1,4 +1,5 @@
 "use client";
+
 import FormBtn from "@/components/FormBtn";
 import FormInput from "@/components/FormInput";
 import SocialLogin from "@/components/SocialLogin";
@@ -6,9 +7,7 @@ import { useFormState } from "react-dom";
 import { formActionHandler } from "./actions";
 
 export default function LoginPage() {
-  const [state, trigger] = useFormState(formActionHandler, {
-    potato: 1,
-  } as any);
+  const [state, trigger] = useFormState(formActionHandler, null);
 
   return (
     <div className="flex flex-col gap-10 px-6 py-8">
@@ -22,14 +21,14 @@ export default function LoginPage() {
           type="email"
           placeholder="이메일"
           required
-          errors={[state.errors ?? []]}
+          errors={state?.errors ?? []}
         />
         <FormInput
           name="password"
           type="password"
           placeholder="비밀번호"
           required
-          errors={[state.errors ?? []]}
+          errors={state?.errors ?? []}
         />
         <FormBtn text="로그인" />
       </form>

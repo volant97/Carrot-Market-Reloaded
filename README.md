@@ -101,3 +101,7 @@
 #### 5.3
 
 - useFormState : use client와 server 분리, prevState 할당, error 핸들링
+
+#### 5.3.1
+
+- useFormState 오류 수정, prevState에 null 할당
