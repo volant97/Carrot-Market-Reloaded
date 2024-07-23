@@ -85,3 +85,7 @@
 #### 4.3
 
 - Log in Screen : 로그인 page, 전화번호 로그인 page 제작
+
+#### 5.0
+
+- Route Handlers : 과거의 API 통신 방법
