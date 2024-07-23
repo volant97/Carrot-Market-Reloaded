@@ -88,4 +88,8 @@
 
 #### 5.0
 
-- Route Handlers : 과거의 API 통신 방법
+- Route Handlers : 과거의 API 통신 방법 (API route handler를 활용한 API route 구축)
+
+#### 5.1
+
+- Server Actions : 현재의 API 통신 방법 (NextJS Server Actions를 활용한 API 통신)

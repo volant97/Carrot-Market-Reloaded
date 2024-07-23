@@ -10,8 +10,20 @@ export default function page() {
         <h2 className="text-xl">번호 좀 물어봐도 될까요?</h2>
       </div>
       <form className="flex flex-col gap-3">
-        <FormInput type="number" placeholder="전화번호" required errors={[]} />
-        <FormInput type="number" placeholder="인증번호" required errors={[]} />
+        <FormInput
+          name="sms num"
+          type="number"
+          placeholder="전화번호"
+          required
+          errors={[]}
+        />
+        <FormInput
+          name="authentication num"
+          type="number"
+          placeholder="인증번호"
+          required
+          errors={[]}
+        />
         <FormBtn loading={false} text="인증완료" />
       </form>
     </div>
