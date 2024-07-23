@@ -56,3 +56,11 @@
 #### 3.11
 
 - Directives : global css apply, layer base, layer utilities, layer components
+
+### 2024.07.23
+
+#### 3.12
+
+- Plugins : tailwind plugin 작동방식
+- daisyUI 설치
+- tailwindcss forms 설치

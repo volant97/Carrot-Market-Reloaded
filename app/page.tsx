@@ -14,6 +14,9 @@ export default function Home() {
               <div className="absolute size-6 bg-red-500 rounded-full animate-ping" />
             </div>
             <span className="btn">테스트</span>
+            <button className="btn btn-outline btn-success bg-white">
+              daisyUI
+            </button>
             <a
               href="https://www.naver.com/"
               target="_blank"
