@@ -16,6 +16,7 @@ export default function LoginPage() {
         <h2 className="text-xl">당근과 만나기 3초전!</h2>
       </div>
       <form action={trigger} className="flex flex-col gap-3">
+        {/* action의 값이 formData에 들어가기 위해서는, input에 name이 할당되어야 한다. */}
         <FormInput
           name="email"
           type="email"

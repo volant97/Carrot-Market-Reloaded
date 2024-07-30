@@ -15,6 +15,7 @@ export default function FormInput({
 }: Props) {
   return (
     <div className="flex flex-col gap-2">
+      {/* action의 값이 formData에 들어가기 위해서는, input에 name이 할당되어야 한다. */}
       <input
         name={name}
         type={type}
