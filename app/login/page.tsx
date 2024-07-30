@@ -17,19 +17,12 @@ export default function LoginPage() {
       </div>
       <form action={trigger} className="flex flex-col gap-3">
         {/* action의 값이 formData에 들어가기 위해서는, input에 name이 할당되어야 한다. */}
-        <FormInput
-          name="email"
-          type="email"
-          placeholder="이메일"
-          required
-          errors={state?.errors ?? []}
-        />
+        <FormInput name="email" type="email" placeholder="이메일" required />
         <FormInput
           name="password"
           type="password"
           placeholder="비밀번호"
           required
-          errors={state?.errors ?? []}
         />
         <FormBtn text="로그인" />
       </form>

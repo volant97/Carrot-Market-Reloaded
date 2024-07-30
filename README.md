@@ -115,3 +115,7 @@
 #### 6.0
 
 - Zod 설치
+
+#### 6.0.1
+
+- Introduction to Zod : Schema 생성 및 적용
