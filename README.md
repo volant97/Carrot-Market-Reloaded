@@ -119,3 +119,9 @@
 #### 6.0.1
 
 - Introduction to Zod : Schema 생성 및 적용
+
+#### 6.1
+
+- Validation Errors : formSchema 생성 및 적용
+  - parse와 safeParse의 차이점
+  - flatten

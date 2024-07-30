@@ -16,19 +16,33 @@ export default function CreateAccountPage() {
         <h2 className="text-xl">당근은 당신과 함께하고 싶어요.</h2>
       </div>
       <form action={trigger} className="flex flex-col gap-3">
-        <FormInput name="user_name" type="text" placeholder="이름" required />
-        <FormInput name="email" type="email" placeholder="이메일" required />
+        <FormInput
+          name="user_name"
+          type="text"
+          placeholder="이름"
+          required
+          errors={state?.fieldErrors.user_name}
+        />
+        <FormInput
+          name="email"
+          type="text"
+          placeholder="이메일"
+          required
+          errors={state?.fieldErrors.email}
+        />
         <FormInput
           name="password"
           type="password"
           placeholder="비밀번호"
           required
+          errors={state?.fieldErrors.password}
         />
         <FormInput
           name="confirm_password"
           type="password"
           placeholder="비밀번호 확인"
           required
+          errors={state?.fieldErrors.confirm_password}
         />
         <FormBtn text="시작하기" />
       </form>
