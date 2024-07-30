@@ -124,4 +124,10 @@
 
 - Validation Errors : formSchema 생성 및 적용
   - parse와 safeParse의 차이점
-  - flatten
+  - flatten()
+
+#### 6.2
+
+- Refinement : field에 고유한 validator 생성
+  - refine()
+  - formErrors를 fieldErrors으로 할당하기
