@@ -1,5 +1,5 @@
 import FormBtn from "@/components/FormBtn";
-import FormInput from "@/components/FormInput";
+import FormInput from "@/components/Input";
 import SocialLogin from "@/components/SocialLogin";
 
 export default function page() {

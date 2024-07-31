@@ -141,3 +141,15 @@
   - toLowerCase() : 모두 소문자로 변환
   - trim() : 앞뒤 공백 제거
   - transform() : 값을 변경
+
+#### 6.4
+
+- Refactor
+  - input 태그 기능 (attribute)
+    - pattern : 정규표현식(regex)
+    - min, max : number element일때
+    - minLength, maxLength : string element일때
+  - input의 attribute를 props로 내리기
+    - ...rest : 모든 props를 하나로 정리
+    - 간단한 유효성 검사는 Zod를 사용하지 않고 input attribute로 가능
+  - input 컴포넌트를 더 확장성 있고, 커스텀 가능하게 함

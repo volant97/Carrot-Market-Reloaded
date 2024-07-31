@@ -1,7 +1,7 @@
 "use client";
 
-import FormBtn from "@/components/FormBtn";
-import FormInput from "@/components/FormInput";
+import Input from "@/components/Input";
+import Btn from "@/components/Btn";
 import SocialLogin from "@/components/SocialLogin";
 import { useFormState } from "react-dom";
 import { createAccount } from "./actions";
@@ -16,35 +16,39 @@ export default function CreateAccountPage() {
         <h2 className="text-xl">당근은 당신과 함께하고 싶어요.</h2>
       </div>
       <form action={trigger} className="flex flex-col gap-3">
-        <FormInput
+        <Input
           name="user_name"
           type="text"
           placeholder="이름"
           required
           errors={state?.fieldErrors.user_name}
+          minLength={3}
+          maxLength={10}
         />
-        <FormInput
+        <Input
           name="email"
-          type="text"
+          type="email"
           placeholder="이메일"
           required
           errors={state?.fieldErrors.email}
         />
-        <FormInput
+        <Input
           name="password"
           type="password"
           placeholder="비밀번호"
           required
           errors={state?.fieldErrors.password}
+          minLength={10}
         />
-        <FormInput
+        <Input
           name="confirm_password"
           type="password"
           placeholder="비밀번호 확인"
           required
           errors={state?.fieldErrors.confirm_password}
+          minLength={10}
         />
-        <FormBtn text="시작하기" />
+        <Btn text="시작하기" />
       </form>
       <SocialLogin />
     </div>
