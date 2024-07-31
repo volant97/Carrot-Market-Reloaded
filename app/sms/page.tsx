@@ -1,30 +1,35 @@
-import FormBtn from "@/components/FormBtn";
-import FormInput from "@/components/Input";
-import SocialLogin from "@/components/SocialLogin";
+"use client";
 
-export default function page() {
+import Btn from "@/components/Btn";
+import Input from "@/components/Input";
+import { useFormState } from "react-dom";
+import { sms } from "./action";
+
+export default function SmsPage() {
+  const [state, trigger] = useFormState(sms, null);
+
   return (
     <div className="flex flex-col gap-10 px-6 py-8">
       <div className="flex flex-col gap-2 *:font-medium">
         <h1 className="text-2xl">전화번호로 시작할 수 있어요</h1>
         <h2 className="text-xl">번호 좀 물어봐도 될까요?</h2>
       </div>
-      <form className="flex flex-col gap-3">
-        <FormInput
-          name="sms num"
-          type="number"
+      <form action={trigger} className="flex flex-col gap-3">
+        <Input
+          name="sms_num"
+          type="text"
           placeholder="전화번호"
           required
-          errors={[]}
+          errors={state?.fieldErrors.sms_num}
         />
-        <FormInput
-          name="authentication num"
+        <Input
+          name="authentication_num"
           type="number"
           placeholder="인증번호"
           required
-          errors={[]}
+          errors={state?.fieldErrors.authentication_num}
         />
-        <FormBtn loading={false} text="인증완료" />
+        <Btn text="인증완료" />
       </form>
     </div>
   );

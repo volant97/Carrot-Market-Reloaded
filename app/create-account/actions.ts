@@ -1,11 +1,11 @@
 "use server";
 
 import { z } from "zod";
-
-// 정규식 : 소문자, 대문자, 숫자, 특수문자 포함 여부
-const passwordRegex = new RegExp(
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*?[#?!@$%^&*-]).+$/
-);
+import {
+  PASSWORD_REGEX_ERROR,
+  PASSWORD_MIN_LENGTH,
+  PASSWORD_REGEX,
+} from "./../../lib/constants";
 
 const checkUserName = (userName: string) => !userName.includes("1");
 const checkPasswords = ({
@@ -31,18 +31,16 @@ const formSchema = z
     email: z.string().email().toLowerCase(),
     password: z
       .string()
-      .min(10)
-      .regex(
-        passwordRegex,
-        "소문자, 대문자, 숫자, 특수문자를 모두 포함해야합니다."
-      ),
-    confirm_password: z.string().min(10),
+      .min(PASSWORD_MIN_LENGTH)
+      .regex(PASSWORD_REGEX, PASSWORD_REGEX_ERROR),
+    confirm_password: z.string().min(PASSWORD_MIN_LENGTH),
   })
   .refine(checkPasswords, {
     message: "비밀번호를 똑같이 입력해주세요.",
     path: ["confirm_password"],
   });
 
+// action의 값이 formData에 들어가기 위해서는, input에 name이 할당되어야 한다.
 export async function createAccount(prevState: any, formData: FormData) {
   const data = {
     // input의 name 참조

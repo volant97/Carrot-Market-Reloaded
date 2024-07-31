@@ -124,7 +124,7 @@
 
 - Validation Errors : formSchema 생성 및 적용
   - parse와 safeParse의 차이점
-  - flatten()
+  - flatten() : result.error를 바로 return하면 정보가 너무 많다. flatten을 통해 간결하게 결과를 출력할 수 있다. 개별 input에 접근하기도 쉽다.
 
 #### 6.2
 
@@ -157,3 +157,7 @@
 #### 6.5
 
 - Recap
+
+#### 6.6
+
+- Log In Validation

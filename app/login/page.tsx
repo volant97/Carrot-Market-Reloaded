@@ -1,13 +1,14 @@
 "use client";
 
-import FormBtn from "@/components/FormBtn";
-import FormInput from "@/components/Input";
+import Input from "@/components/Input";
+import Btn from "@/components/Btn";
 import SocialLogin from "@/components/SocialLogin";
 import { useFormState } from "react-dom";
-import { formActionHandler } from "./actions";
+import { login } from "./actions";
+import { PASSWORD_MIN_LENGTH } from "@/lib/constants";
 
 export default function LoginPage() {
-  const [state, trigger] = useFormState(formActionHandler, null);
+  const [state, trigger] = useFormState(login, null);
 
   return (
     <div className="flex flex-col gap-10 px-6 py-8">
@@ -17,14 +18,22 @@ export default function LoginPage() {
       </div>
       <form action={trigger} className="flex flex-col gap-3">
         {/* action의 값이 formData에 들어가기 위해서는, input에 name이 할당되어야 한다. */}
-        <FormInput name="email" type="email" placeholder="이메일" required />
-        <FormInput
+        <Input
+          name="email"
+          type="email"
+          placeholder="이메일"
+          required
+          errors={state?.fieldErrors.email}
+        />
+        <Input
           name="password"
           type="password"
           placeholder="비밀번호"
           required
+          minLength={PASSWORD_MIN_LENGTH}
+          errors={state?.fieldErrors.password}
         />
-        <FormBtn text="로그인" />
+        <Btn text="로그인" />
       </form>
       <SocialLogin />
     </div>
