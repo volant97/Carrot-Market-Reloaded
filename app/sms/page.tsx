@@ -5,8 +5,13 @@ import Input from "@/components/Input";
 import { useFormState } from "react-dom";
 import { sms } from "./action";
 
+const initialState = {
+  token: false,
+  error: undefined,
+};
+
 export default function SmsPage() {
-  const [state, trigger] = useFormState(sms, null);
+  const [state, trigger] = useFormState(sms, initialState);
 
   return (
     <div className="flex flex-col gap-10 px-6 py-8">
@@ -15,16 +20,25 @@ export default function SmsPage() {
         <h2 className="text-xl">번호 좀 물어봐도 될까요?</h2>
       </div>
       <form action={trigger} className="flex flex-col gap-3">
-        <Input name="phone_num" type="text" placeholder="전화번호" required />
         <Input
-          name="token"
-          type="number"
-          placeholder="인증번호"
+          name="phone"
+          type="text"
+          placeholder="전화번호"
           required
-          min={100000}
-          max={999999}
+          errors={state.error?.formErrors}
+          disabled={state.token}
         />
-        <Btn text="인증완료" />
+        {state.token ? (
+          <Input
+            name="token"
+            type="number"
+            placeholder="인증번호"
+            required
+            min={100000}
+            max={999999}
+          />
+        ) : null}
+        <Btn text={state.token ? "인증하기" : "문자전송"} />
       </form>
     </div>
   );

@@ -180,3 +180,11 @@
 #### 6.8
 
 - refine 사용시 동일한 표현 예시
+
+#### 6.8.1
+
+- SMS Validation
+  - validator.isMobilePhone : 두번째 인자에 국가별 코드 입력 가능
+  - action의 prevState 사용
+  - phone, token 개별 Schema 작성 및 적용
+  - error 처리
