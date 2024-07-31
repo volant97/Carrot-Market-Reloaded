@@ -10,6 +10,7 @@ import validator from "validator";
 // sms함수에 formData가 들어오면 tpye은 number이라도 string으로 변한다.
 // 따라서 coerce 사용하여 number()로 변환해야한다.
 const phoneNumSchema = z.string().trim().refine(validator.isMobilePhone);
+// const phoneNumSchema = z.string().trim().refine(v => validator.isMobilePhone(v));
 const tokenSchema = z.coerce.number().min(100000).max(999999);
 
 // action의 값이 formData에 들어가기 위해서는, input에 name이 할당되어야 한다.

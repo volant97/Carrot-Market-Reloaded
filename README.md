@@ -173,7 +173,10 @@
 #### 6.7.2
 
 - Coerce
-  - action의 prevState 사용
   - Schema에서 coerce 사용하여 number()로 변환 (강제로 변환)
     - transform() : 값 변환
     - coerce : 타입 강제 변환
+
+#### 6.8
+
+- refine 사용시 동일한 표현 예시
