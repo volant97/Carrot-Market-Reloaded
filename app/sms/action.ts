@@ -7,21 +7,25 @@ import { z } from "zod";
 import validator from "validator";
 
 // sms_num을 먼저 검사하고, 이후에 authentication_num을 검사하기 때문에 z.object에 넣지 않아도 된다.
-const phoneSchema = z.string().trim().refine(validator);
+// sms함수에 formData가 들어오면 tpye은 number이라도 string으로 변한다.
+// 따라서 coerce 사용하여 number()로 변환해야한다.
+const phoneNumSchema = z.string().trim().refine(validator.isMobilePhone);
+const tokenSchema = z.coerce.number().min(100000).max(999999);
 
 // action의 값이 formData에 들어가기 위해서는, input에 name이 할당되어야 한다.
 export const sms = async (prevState: any, formData: FormData) => {
   const data = {
     // input의 name 참조
-    sms_num: formData.get("sms_num"),
-    authentication_num: formData.get("authentication_num"),
+    phone_num: formData.get("phone_num"),
+    token: formData.get("token"),
   };
 
-  const result = phoneSchema.safeParse(data);
+  const phoneNumResult = phoneNumSchema.safeParse(data.phone_num);
+  const tokenResult = tokenSchema.safeParse(data.token);
 
-  if (!result.success) {
-    return result.error.flatten();
+  if (!tokenResult.success) {
+    return tokenResult.error.flatten();
   } else {
-    // console.log(result.data);
+    console.log(tokenResult.data);
   }
 };

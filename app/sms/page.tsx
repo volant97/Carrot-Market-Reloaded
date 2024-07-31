@@ -15,19 +15,14 @@ export default function SmsPage() {
         <h2 className="text-xl">번호 좀 물어봐도 될까요?</h2>
       </div>
       <form action={trigger} className="flex flex-col gap-3">
+        <Input name="phone_num" type="text" placeholder="전화번호" required />
         <Input
-          name="sms_num"
-          type="text"
-          placeholder="전화번호"
-          required
-          errors={state?.fieldErrors.sms_num}
-        />
-        <Input
-          name="authentication_num"
+          name="token"
           type="number"
           placeholder="인증번호"
           required
-          errors={state?.fieldErrors.authentication_num}
+          min={100000}
+          max={999999}
         />
         <Btn text="인증완료" />
       </form>
