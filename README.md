@@ -161,3 +161,7 @@
 #### 6.6
 
 - Log In Validation
+
+#### 6.7
+
+- Validator 설치 (Zod와 같이 사용하면 좋다.)
