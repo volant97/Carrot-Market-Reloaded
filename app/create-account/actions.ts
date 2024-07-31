@@ -45,6 +45,7 @@ const formSchema = z
 
 export async function createAccount(prevState: any, formData: FormData) {
   const data = {
+    // input의 name 참조
     user_name: formData.get("user_name"),
     email: formData.get("email"),
     password: formData.get("password"),
@@ -64,6 +65,6 @@ export async function createAccount(prevState: any, formData: FormData) {
   if (!result.success) {
     return result.error.flatten();
   } else {
-    console.log(result.data);
+    // console.log(result.data);
   }
 }

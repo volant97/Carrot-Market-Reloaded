@@ -153,3 +153,7 @@
     - ...rest : 모든 props를 하나로 정리
     - 간단한 유효성 검사는 Zod를 사용하지 않고 input attribute로 가능
   - input 컴포넌트를 더 확장성 있고, 커스텀 가능하게 함
+
+#### 6.5
+
+- Recap
