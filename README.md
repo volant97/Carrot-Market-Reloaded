@@ -165,3 +165,7 @@
 #### 6.7
 
 - Validator 설치 (Zod와 같이 사용하면 좋다.)
+
+#### 6.7.1
+
+- Validator type 설치
