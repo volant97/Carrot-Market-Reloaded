@@ -131,3 +131,13 @@
 - Refinement : field에 고유한 validator 생성
   - refine()
   - formErrors를 fieldErrors으로 할당하기
+
+### 2024.07.31
+
+#### 6.3
+
+- Transformation
+  - regex() : 정규식
+  - toLowerCase() : 모두 소문자로 변환
+  - trim() : 앞뒤 공백 제거
+  - transform() : 값을 변경

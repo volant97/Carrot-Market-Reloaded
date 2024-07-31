@@ -2,6 +2,11 @@
 
 import { z } from "zod";
 
+// 정규식 : 소문자, 대문자, 숫자, 특수문자 포함 여부
+const passwordRegex = new RegExp(
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*?[#?!@$%^&*-]).+$/
+);
+
 const checkUserName = (userName: string) => !userName.includes("1");
 const checkPasswords = ({
   password,
@@ -20,9 +25,17 @@ const formSchema = z
       })
       .min(5, "너무 짧아요!")
       .max(10, "너무 길어요!")
-      .refine(checkUserName, `'1'은 입력할 수 없어요.`),
-    email: z.string().email(),
-    password: z.string().min(10),
+      .trim()
+      .refine(checkUserName, `'1'은 입력할 수 없어요.`)
+      .transform((v) => `🔥 ${v} 🔥`),
+    email: z.string().email().toLowerCase(),
+    password: z
+      .string()
+      .min(10)
+      .regex(
+        passwordRegex,
+        "소문자, 대문자, 숫자, 특수문자를 모두 포함해야합니다."
+      ),
     confirm_password: z.string().min(10),
   })
   .refine(checkPasswords, {
@@ -48,5 +61,9 @@ export async function createAccount(prevState: any, formData: FormData) {
   // safeParse error를 throw하지 않음 → 유효성 검사의 결과만 얻음 (추천)
   const result = formSchema.safeParse(data);
 
-  if (!result.success) return result.error.flatten();
+  if (!result.success) {
+    return result.error.flatten();
+  } else {
+    console.log(result.data);
+  }
 }
