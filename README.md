@@ -188,3 +188,9 @@
   - action의 prevState 사용
   - phone, token 개별 Schema 작성 및 적용
   - error 처리
+
+### 2024.08.01
+
+#### 6.9
+
+- Recap

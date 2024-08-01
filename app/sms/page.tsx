@@ -36,6 +36,7 @@ export default function SmsPage() {
             required
             min={100000}
             max={999999}
+            errors={state.error?.formErrors}
           />
         ) : null}
         <Btn text={state.token ? "인증하기" : "문자전송"} />
