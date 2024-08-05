@@ -236,7 +236,7 @@
 
   - npx prisma studio
 
-  #### 7.4
+#### 7.4
 
 - Relationships
   - 릴레이션 자동완성 방법
@@ -247,3 +247,8 @@
   - migration 오류 해결
     - 잘못 생성한 폴더 삭제한 부분 때문에 이후 migration이 안됨
     - 다시 파일 복원 후 해결
+
+#### 7.4.1
+
+- Relationships
+  - SMSToken 작성중
