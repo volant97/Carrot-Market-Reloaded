@@ -204,5 +204,21 @@
 #### 7.0.1
 
 - Prisma init
-  - .gitignore에 .ent 추가
+  - npx prisma init
+  - .gitignore
+    - .ent
   - schema.prisma 수정
+
+#### 7.1
+
+- Schemas
+  - Schemas 작성
+  - npx prisma migrate dev
+    - migrations / add_user / migration.sql
+  - .gitignore
+    - .db
+    - .db-journal
+  - migration 오류
+    - 20240805063828_add_user
+      - 누락된 부분 존재해서 다시 migration 진행
+      - 해당 폴더 삭제 여부 체크
