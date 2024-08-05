@@ -233,4 +233,17 @@
 #### 7.3
 
 - Prisma Studio
+
   - npx prisma studio
+
+  #### 7.4
+
+- Relationships
+  - 릴레이션 자동완성 방법
+    - 플러그인 prisma 다운
+    - cmd + shift + p로 JSON settings 파일을 열고
+    - "[prisma]": {"editor.defaultFormatter": "Prisma.prisma"}
+    - 추가하면 save시 릴레이션 자동완성
+  - migration 오류 해결
+    - 잘못 생성한 폴더 삭제한 부분 때문에 이후 migration이 안됨
+    - 다시 파일 복원 후 해결
