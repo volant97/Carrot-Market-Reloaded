@@ -197,6 +197,12 @@
 
 ### 2024.08.05
 
-#### 6.3
+#### 7.0
 
 - Prisma Setup
+
+#### 7.0.1
+
+- Prisma init
+  - .gitignore에 .ent 추가
+  - schema.prisma 수정
