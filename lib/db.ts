@@ -13,6 +13,7 @@ async function test() {
       },
     },
   });
+  console.log(token);
 }
 test();
 

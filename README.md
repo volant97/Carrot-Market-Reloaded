@@ -252,3 +252,8 @@
 
 - Relationships
   - SMSToken 작성중
+
+#### 7.4.2
+
+- Relationships
+  - SMSToken : token 생성
