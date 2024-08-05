@@ -257,3 +257,10 @@
 
 - Relationships
   - SMSToken : token 생성
+
+#### 7.4.3
+
+- Relationships
+  - SMSToken : findUnique
+    - include를 써야지만 연결한 값의 데이터(user)가 출력된다.
+    - 기본값으로는 출력 안됨
