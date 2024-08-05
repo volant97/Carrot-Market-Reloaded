@@ -229,3 +229,8 @@
   - data 추가 및 검색
   - migration 오류 해결
     - 잘못 생성한 폴더 삭제
+
+#### 7.3
+
+- Prisma Studio
+  - npx prisma studio
