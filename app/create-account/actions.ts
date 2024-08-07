@@ -8,7 +8,32 @@ import {
 } from "./../../lib/constants";
 import db from "@/lib/db";
 
-const checkUserName = (userName: string) => !userName.includes("1");
+const checkUsername = async (username: string) => !username.includes("tomato");
+
+const checkUniqueUsername = async (username: string) => {
+  const user = await db.user.findUnique({
+    where: {
+      username,
+    },
+    select: {
+      id: true,
+    },
+  });
+  return !user;
+};
+
+const checkUniqueEmail = async (email: string) => {
+  const user = await db.user.findUnique({
+    where: {
+      email,
+    },
+    select: {
+      id: true,
+    },
+  });
+  return !user;
+};
+
 const checkPasswords = ({
   password,
   confirm_password,
@@ -27,9 +52,14 @@ const formSchema = z
       .min(5, "너무 짧아요!")
       .max(10, "너무 길어요!")
       .trim()
-      .refine(checkUserName, `'1'은 입력할 수 없어요.`),
+      .refine(checkUsername, `'tomato'는 입력할 수 없어요.`)
+      .refine(checkUniqueUsername, "이미 존재하는 이름입니다."),
     // .transform((v) => `🔥 ${v} 🔥`),
-    email: z.string().email().toLowerCase(),
+    email: z
+      .string()
+      .email()
+      .toLowerCase()
+      .refine(checkUniqueEmail, "이미 존재하는 이메일입니다."),
     password: z
       .string()
       .min(PASSWORD_MIN_LENGTH)
@@ -59,37 +89,16 @@ export async function createAccount(prevState: any, formData: FormData) {
   // }
 
   // safeParse error를 throw하지 않음 → 유효성 검사의 결과만 얻음 (추천)
-  const result = formSchema.safeParse(data);
+  const result = await formSchema.safeParseAsync(data);
 
   if (!result.success) {
     return result.error.flatten();
   } else {
-    const user = await db.user.findUnique({
-      where: {
-        username: result.data.user_name,
-      },
-      select: {
-        id: true,
-      },
-    });
-
-    const userEmail = await db.user.findUnique({
-      where: {
-        email: result.data.email,
-      },
-      select: {
-        id: true,
-      },
-    });
-
+    // 모든 검증이 끝난 후 실행되어야 하는 곳
     // 1. 동일한 '이름'이 존재하는지 체크
-    // if(user){
-    // }
-
+    // → Zod로 체크
     // 2. 동일한 '이메일'이 존재하는지 체크
-    // if(userEmail){
-    // }
-
+    // → Zod로 체크
     // 3. 비밀번호 해싱
     // 4. DB에 저장
     // 5. 로그인

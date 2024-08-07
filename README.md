@@ -301,3 +301,11 @@
 
 - Database Validation
   - 검증에 필요한 로직 설계
+
+#### 8.1.1
+
+- Database Validation
+  - safeParseAsync : Zod에 awiat 추가
+    - formSchema.safeParseAsync(data) 앞에 await 작성해야함
+  - Zod로 검증할 때 함수가 Boolean을 return하고 있는지 체크
+    - 화살표 함수로 한줄 작성하면 return 문구 생략 가능
