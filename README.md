@@ -273,7 +273,7 @@
     - optional일 때만 정상 작동
     - 1:1 채팅 시 유저가 삭제되어도 대화 로그 유지
     - 삭제된 유저는 '존재하지 않는 유저'로 표기 가능
-  - Restrict : 참조 레코드 있는경우 참조 필드가 삭제되지 않게 함
+  - Restrict(기본값) : 참조 레코드 있는경우 참조 필드가 삭제되지 않게 함
     - 좋아요, 포스팅 글 등 유저가 삭제되어도 유지하고 싶은 기능이 있을 때 가능
   - NoAction: Restrict과 유사하지만 사용 중인 데이터베이스에 따라 다름
   - SetDefault: 참조 필드가 기본값으로 설정
@@ -288,3 +288,11 @@
     - prisma 다시 설치 : npm i
     - prisma migration 진행 : npx prisma migrate dev
     - studio 확인 : npx prisma studio
+
+#### 7.6.1
+
+- Recap
+  - .gitignore 파일 확인
+    - `.env`
+    - `*.db`
+    - `*.db-journal`
