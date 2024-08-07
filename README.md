@@ -277,3 +277,14 @@
     - 좋아요, 포스팅 글 등 유저가 삭제되어도 유지하고 싶은 기능이 있을 때 가능
   - NoAction: Restrict과 유사하지만 사용 중인 데이터베이스에 따라 다름
   - SetDefault: 참조 필드가 기본값으로 설정
+
+### 2024.08.07
+
+#### 7.6
+
+- Recap
+  - 다른 작업 환경으로 변경 시
+    - .env 생성 : DATABASE_URL="file:./database.db" (test)
+    - prisma 다시 설치 : npm i
+    - prisma migration 진행 : npx prisma migrate dev
+    - studio 확인 : npx prisma studio
