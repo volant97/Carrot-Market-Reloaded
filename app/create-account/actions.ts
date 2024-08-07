@@ -6,6 +6,7 @@ import {
   PASSWORD_MIN_LENGTH,
   PASSWORD_REGEX,
 } from "./../../lib/constants";
+import db from "@/lib/db";
 
 const checkUserName = (userName: string) => !userName.includes("1");
 const checkPasswords = ({
@@ -26,8 +27,8 @@ const formSchema = z
       .min(5, "너무 짧아요!")
       .max(10, "너무 길어요!")
       .trim()
-      .refine(checkUserName, `'1'은 입력할 수 없어요.`)
-      .transform((v) => `🔥 ${v} 🔥`),
+      .refine(checkUserName, `'1'은 입력할 수 없어요.`),
+    // .transform((v) => `🔥 ${v} 🔥`),
     email: z.string().email().toLowerCase(),
     password: z
       .string()
@@ -63,6 +64,35 @@ export async function createAccount(prevState: any, formData: FormData) {
   if (!result.success) {
     return result.error.flatten();
   } else {
-    // console.log(result.data);
+    const user = await db.user.findUnique({
+      where: {
+        username: result.data.user_name,
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    const userEmail = await db.user.findUnique({
+      where: {
+        email: result.data.email,
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    // 1. 동일한 '이름'이 존재하는지 체크
+    // if(user){
+    // }
+
+    // 2. 동일한 '이메일'이 존재하는지 체크
+    // if(userEmail){
+    // }
+
+    // 3. 비밀번호 해싱
+    // 4. DB에 저장
+    // 5. 로그인
+    // 6. '/home'으로 redirect
   }
 }

@@ -296,3 +296,8 @@
     - `.env`
     - `*.db`
     - `*.db-journal`
+
+#### 8.1
+
+- Database Validation
+  - 검증에 필요한 로직 설계
