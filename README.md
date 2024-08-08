@@ -30,24 +30,64 @@
 #### 3.5
 
 - Responsive Modifiers : 반응형 CSS 구현 테스트
+  - 반응형 CSS Tip
+    - 기존 CSS는 데스크탑을 버전 사이즈를 먼저 제작 후 모바일, 더 큰 화면 순으로 작업하지만
+    - Taillwind에서는 기본적으로 모바일 버전 사이즈를 먼저 제작 후 데스크탑, 더 큰 화면 순으로 작업을 이어간다.
+    - ex) sm:bg-red-100 => 작은 화면(모바일) 이후 큰화면까지 배경색이 변한다. (작은화면은 기존 값으로 유지)
+    - 종류) sm, md, lg, xl, 2xl 등
 
 #### 3.6
 
 - Form Modifiers : 그라디언트, 유효성검사 CSS 구현 테스트
+
+  - 그라디언트 CSS Tip
+
+    - ex) bg-gradient-to-tr from-cyan-500 via-yellow-300 to-purple-400 => via는 중간색 필요할 때
+    - ex) hover 시 구현 => hover:bg-gradient-to-tr hover:via-yellow-500 hover:from-cyan-600 hover:to-purple-500
+    - ex) 기준점(중간지점) 변경 시 => bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%
+
+  - input 유효성검사 Tip
+
+    - 조건 충족 X]
+      - ex) invalid:bg-red-100 / input 속성에 type, required 필요
+      - ex) 다른 조건의 속성을 바꾸고 싶다(2개이상 조건이 달린) => invalid:focus:ring-red-500
+    - 조건 충족 O]
+      - ex) valid:bg-green-100 / input 속성에 type, required 필요
+
+  - input과 button간의 연결 Tip
+    - ex) input에 peer를 작성 => button에 peer-invalid:text-red-300
 
 ### 2024.07.22
 
 #### 3.7
 
 - State Modifiers : class 선택, 가상 class
+  - 가상클래스 CSS Tip
+    - \* : 자식에게 적용
+      - ex) \* : outline-none
+    - has-[] : 해당 class 가지고 있는 것 선택 및 지정
+      - ex) has-[:invalid]:ring-red-300 has-[:invalid]:ring
 
 #### 3.8
 
 - Lists and Animations : 리스트 선택, 애니메이션
+  - 선택자 Tip
+    - odd : 홀수
+    - even : 짝수
+    - empty : ""일때
 
 #### 3.9
 
 - Group Modifiers : 그룹 선택
+
+  - 선택자 Tip
+    - 단순 적용]
+      - \*: 자식에게 단순 적용 ex) 아래 요소에 중복되는 outline-none 전부 적용시
+      - peer : 동등한 관계일때 ex) input 빈칸일 시 button 색 변경
+    - 선택적 적용]
+      - group : 부모의 조건에 따라 자식 스타일 변경(부모 → 자식) ex) row hover시 text 색 변경
+      - has-[] : 자식의 조건에 따라 부모 스타일 변경(자식 → 부모) ex) input 빈칸일 시 row 테두리 색 변경
+      - group-focus-within : input등 선택시 작동
 
 #### 3.10
 
@@ -56,6 +96,14 @@
 #### 3.11
 
 - Directives : global css apply, layer base, layer utilities, layer components
+  - tailwind global css
+    - base : 기본적으로 모두에게 적용
+    - components : 여러 css를 모아서 컴포넌트화 ==> plugin을 위해서 존재
+    - utilities : 새로운 하나의 css
+  - tailwind.config
+    - theme extend : css 요소를 확장하여 사용 가능 ex) margin 값 정해놓으면 top, bottom 등에 확장하여 활용 가능
+  - a링크 탭에서 열기
+    - ex) `<a href="https://www.naver.com/" target="_blank">테스트</a>`
 
 ### 2024.07.23
 
@@ -64,6 +112,12 @@
 - Plugins : tailwind plugin 작동방식
 - daisyUI 설치
 - tailwindcss forms 설치
+- tailwind Plugins
+  - 어떤 개발자가 tailwind를 사용하여 component를 제작했다면,
+  - 그 component를 globals.css에 붙여넣기 하기는 대신에 plugin을 설치하면 된다.
+  - plugin은 base reset, component, utility 등을 삽입할 것이다.
+- daisyUI (추천) : tailwind component 라이브러리
+  - tailwindcss forms (추천)
 
 #### 3.13
 
@@ -309,3 +363,9 @@
     - formSchema.safeParseAsync(data) 앞에 await 작성해야함
   - Zod로 검증할 때 함수가 Boolean을 return하고 있는지 체크
     - 화살표 함수로 한줄 작성하면 return 문구 생략 가능
+
+### 2024.08.08
+
+#### 8.1.2
+
+- README에 Tips 정리
