@@ -378,3 +378,8 @@
     - plugins: [require("tailwind-scrollbar-hide")] 작성
     - scrollbar-hide 적용
       - 외곽 div에 w-full h-[100dvh] overflow-y-auto overflow-x-hidden scrollbar-hide
+
+#### 8.1.4
+
+- 스크롤 애니메이션 + tailwind 구현
+  - error 해결중...
