@@ -369,3 +369,12 @@
 #### 8.1.2
 
 - README에 Tips 정리
+
+#### 8.1.3
+
+- 스크롤 애니메이션 + tailwind 구현
+  - 스크롤바 숨기기 플러그인 설치
+    - npm i tailwind-scrollbar-hide 설치
+    - plugins: [require("tailwind-scrollbar-hide")] 작성
+    - scrollbar-hide 적용
+      - 외곽 div에 w-full h-[100dvh] overflow-y-auto overflow-x-hidden scrollbar-hide
