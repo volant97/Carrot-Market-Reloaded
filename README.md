@@ -409,3 +409,15 @@
 - Password Hashing
   - bcrypt typescript definition 설치
     - npm i @types/bcrypt
+
+#### 8.2.2
+
+- Password Hashing
+  - Hashing : 단방향 무작위 문자열을 생성하여 DB에 비밀번호를 저장
+    - DB가 해킹 또는 유출되어도 유추할 수 없게 함
+    - 정형데이터로 정해진 양식, 정해진 길이로 맞출 수있음
+    - ex) 12345 → 4dlkwah1lkhjadlk-09adljk (O)
+    - ex) 4dlkwah1lkhjadlk-09adljk → 12345 (X)
+  - bcrypt 비밀번호 해시
+    - 해시함수는 단방향 멱등성 함수
+    - 정해진입력에따라 정해진 난수를 출력함
