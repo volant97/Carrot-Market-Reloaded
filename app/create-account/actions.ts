@@ -7,6 +7,7 @@ import {
   PASSWORD_REGEX,
 } from "./../../lib/constants";
 import db from "@/lib/db";
+import bcrypt from "bcrypt";
 
 const checkUsername = async (username: string) => !username.includes("tomato");
 
@@ -94,7 +95,7 @@ export async function createAccount(prevState: any, formData: FormData) {
   if (!result.success) {
     return result.error.flatten();
   } else {
-    // 모든 검증이 끝난 후 실행되어야 하는 곳
+    // 모든 검증(~2번)이 끝난 후 실행(3번~)되어야 하는 곳
     // 1. 동일한 '이름'이 존재하는지 체크
     // → Zod로 체크
     // 2. 동일한 '이메일'이 존재하는지 체크
@@ -103,5 +104,21 @@ export async function createAccount(prevState: any, formData: FormData) {
     // 4. DB에 저장
     // 5. 로그인
     // 6. '/home'으로 redirect
+
+    const hashedPasswoed = await bcrypt.hash(result.data.password, 12);
+
+    const user = await db.user.create({
+      data: {
+        username: result.data.user_name,
+        email: result.data.email,
+        password: hashedPasswoed,
+      },
+      select: {
+        id: true,
+        username: true,
+      },
+    });
+
+    console.log(user);
   }
 }
