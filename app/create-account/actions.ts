@@ -8,6 +8,9 @@ import {
 } from "./../../lib/constants";
 import db from "@/lib/db";
 import bcrypt from "bcrypt";
+import { getIronSession } from "iron-session";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 const checkUsername = async (username: string) => !username.includes("tomato");
 
@@ -74,6 +77,8 @@ const formSchema = z
 
 // action의 값이 formData에 들어가기 위해서는, input에 name이 할당되어야 한다.
 export async function createAccount(prevState: any, formData: FormData) {
+  console.log(cookies());
+
   const data = {
     // input의 name 참조
     user_name: formData.get("user_name"),
@@ -119,6 +124,18 @@ export async function createAccount(prevState: any, formData: FormData) {
       },
     });
 
-    console.log(user);
+    const cookie = await getIronSession(cookies(), {
+      cookieName: "karrot",
+      password: process.env.COOKIE_PASSWORD!,
+    });
+
+    // @ts-ignore
+    cookie.id = user.id;
+    await cookie.save();
+
+    redirect("/profile");
+
+    console.log("회원가입 완료", user);
+    console.log("쿠키", cookie);
   }
 }

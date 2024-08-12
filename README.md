@@ -414,6 +414,7 @@
 
 - Password Hashing
   - Hashing : 단방향 무작위 문자열을 생성하여 DB에 비밀번호를 저장
+  - 암호화 : 양방향
     - DB가 해킹 또는 유출되어도 유추할 수 없게 함
     - 정형데이터로 정해진 양식, 정해진 길이로 맞출 수있음
     - ex) 12345 → 4dlkwah1lkhjadlk-09adljk (O)
@@ -440,3 +441,20 @@
 
 - Iron Session 설치
   - npm i iron-session
+
+#### 8.3.2
+
+- Iron Session
+  - 암호화를 통해 쿠키 비밀번호 생성
+    - Hashing : 단방향
+    - 암호화 : 양방향
+    - 쿠키를 생성하면 자동으로 암호화되어 저장된다.
+      - 브라우저 - 개발자도구 - 애플리케이션에서 확인
+    - console.log로 찍어보면 복호화되어 id값이 나오는 것을 볼 수 있다.
+  - process.env.COOKIE_PASSWORD!
+    - env에 쿠키 암호 저장
+    - 무조건 env에 존재한다는 뜻
+    - 32글자 이상
+  - // @ts-ignore
+    - 해당 주석을 통해 잠시 typescript 오류를 임시적으로 해결 가능
+  - 회원가입 성공 시 profile 페이지로 redirect
