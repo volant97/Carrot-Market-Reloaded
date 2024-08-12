@@ -1,6 +1,5 @@
 "use client";
 
-import { ScrollAnimationContainer } from "@/components/ScrollAnimationContainer";
 import React, { useEffect, useRef, useState } from "react";
 
 export default function TestPage() {
@@ -12,24 +11,18 @@ export default function TestPage() {
 
     const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
-        //entry.isIntersecting  ? setIsInViewport(true) : setIsInViewport(false);
-        if (entry.isIntersecting) {
-          setIsInViewport(true);
-        } else {
-          setIsInViewport(false);
-        }
+        entry.isIntersecting ? setIsInViewport(true) : setIsInViewport(false);
       });
     };
     const options = { root: null, rootMargin: "0px", threshold: 0 };
     const observer = new IntersectionObserver(callback, options);
 
-    console.log(ref.current);
     observer.observe(ref.current);
 
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [isInViewport]);
 
   return (
     <div className="">
@@ -44,11 +37,18 @@ export default function TestPage() {
         <div className="border-4 h-96">
           <h1>Box</h1>
         </div>
-        <div ref={ref} className={isInViewport ? "text-red-400" : ""}>
+        <div>
           <h1>하이요</h1>
         </div>
-        <div className="border-4 h-96">
-          <h1>Box</h1>
+        <div
+          ref={ref}
+          className={
+            isInViewport
+              ? "transition-all duration-500 transform translate-x-0 "
+              : "translate-x-40"
+          }
+        >
+          <h1 className=" border-4 h-96 bg-red-800">Box</h1>
         </div>
         <div>
           <h1>하이요</h1>
