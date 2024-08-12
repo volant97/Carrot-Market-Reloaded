@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useRef, useState } from "react";
 
 export const useScrollAnimation = () => {
@@ -9,12 +7,7 @@ export const useScrollAnimation = () => {
   useEffect(() => {
     const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
-        //entry.isIntersecting  ? setIsInViewport(true) : setIsInViewport(false);
-        if (entry.isIntersecting) {
-          setIsInViewport(true);
-        } else {
-          setIsInViewport(false);
-        }
+        entry.isIntersecting ? setIsInViewport(true) : setIsInViewport(false);
       });
     };
     const options = { root: null, rootMargin: "0px", threshold: 0 };
