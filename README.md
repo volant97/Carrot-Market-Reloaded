@@ -435,3 +435,8 @@
     - id를 무작위 텍스트로 변환 후 쿠키에 담아서 제공
     - 이후 문자열을 복호화하여 해당 id를 찾고, 해당 사용자의 정보를 출력한다.
       - ex) jawdpojpof → id:6
+
+#### 8.3.1
+
+- Iron Session 설치
+  - npm i iron-session
