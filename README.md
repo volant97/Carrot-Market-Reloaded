@@ -361,6 +361,7 @@
 - Database Validation
   - safeParseAsync : Zod에 awiat 추가
     - formSchema.safeParseAsync(data) 앞에 await 작성해야함
+    - spa로 줄여서 쓸 수 있음
   - Zod로 검증할 때 함수가 Boolean을 return하고 있는지 체크
     - 화살표 함수로 한줄 작성하면 return 문구 생략 가능
 
@@ -450,7 +451,7 @@
     - 암호화 : 양방향
     - 쿠키를 생성하면 자동으로 암호화되어 저장된다.
       - 브라우저 - 개발자도구 - 애플리케이션에서 확인
-    - console.log로 찍어보면 복호화되어 id값이 나오는 것을 볼 수 있다.
+    - 콘솔로그로 찍어보면 복호화되어 id값이 나오는 것을 볼 수 있다.
   - process.env.COOKIE_PASSWORD!
     - env에 쿠키 암호 저장
     - 무조건 env에 존재한다는 뜻
@@ -458,3 +459,9 @@
   - // @ts-ignore
     - 해당 주석을 통해 잠시 typescript 오류를 임시적으로 해결 가능
   - 회원가입 성공 시 profile 페이지로 redirect
+
+#### 8.4
+
+- Recap
+  - 불필요한 주석 제거
+  - 콘솔로그 제거

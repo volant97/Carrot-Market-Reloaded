@@ -6,6 +6,7 @@ import SocialLogin from "@/components/SocialLogin";
 import { useFormState } from "react-dom";
 import { createAccount } from "./actions";
 import { PASSWORD_MIN_LENGTH } from "@/lib/constants";
+import { cookies } from "next/headers";
 
 export default function CreateAccountPage() {
   const [state, trigger] = useFormState(createAccount, null);

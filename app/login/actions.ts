@@ -28,6 +28,5 @@ export const login = async (prevState: any, formData: FormData) => {
   if (!result.success) {
     return result.error.flatten();
   } else {
-    // console.log(result.data);
   }
 };
