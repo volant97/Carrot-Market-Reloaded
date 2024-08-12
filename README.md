@@ -402,3 +402,10 @@
 
 - Password Hashing
   - bcrypt 설치
+    - npm i bcrypt
+
+#### 8.2.1
+
+- Password Hashing
+  - bcrypt typescript definition 설치
+    - npm i @types/bcrypt
