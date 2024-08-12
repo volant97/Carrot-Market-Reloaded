@@ -397,3 +397,8 @@
   - 컴포넌트화 완료
   - 기존 error 분석
     - 컴포넌트에 use client가 없어서 발생한 오류
+
+#### 8.2
+
+- Password Hashing
+  - bcrypt 설치
