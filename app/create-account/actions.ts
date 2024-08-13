@@ -8,36 +8,10 @@ import {
 } from "./../../lib/constants";
 import db from "@/lib/db";
 import bcrypt from "bcrypt";
-import { getIronSession } from "iron-session";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import getSession from "@/lib/session";
 
 const checkUsername = async (username: string) => !username.includes("tomato");
-
-const checkUniqueUsername = async (username: string) => {
-  const user = await db.user.findUnique({
-    where: {
-      username,
-    },
-    select: {
-      id: true,
-    },
-  });
-  return !user;
-};
-
-const checkUniqueEmail = async (email: string) => {
-  const user = await db.user.findUnique({
-    where: {
-      email,
-    },
-    select: {
-      id: true,
-    },
-  });
-  return !user;
-};
 
 const checkPasswords = ({
   password,
@@ -57,19 +31,52 @@ const formSchema = z
       .min(5, "너무 짧아요!")
       .max(10, "너무 길어요!")
       .trim()
-      .refine(checkUsername, `'tomato'는 입력할 수 없어요.`)
-      .refine(checkUniqueUsername, "이미 존재하는 이름입니다."),
-    // .transform((v) => `🔥 ${v} 🔥`),
-    email: z
-      .string()
-      .email()
-      .toLowerCase()
-      .refine(checkUniqueEmail, "이미 존재하는 이메일입니다."),
+      .refine(checkUsername, `'tomato'는 입력할 수 없어요.`),
+    email: z.string().email().toLowerCase(),
     password: z
       .string()
       .min(PASSWORD_MIN_LENGTH)
       .regex(PASSWORD_REGEX, PASSWORD_REGEX_ERROR),
     confirm_password: z.string().min(PASSWORD_MIN_LENGTH),
+  })
+  .superRefine(async (data, ctx) => {
+    const user = await db.user.findUnique({
+      where: {
+        username: data.user_name,
+      },
+      select: {
+        id: true,
+      },
+    });
+    if (user) {
+      ctx.addIssue({
+        code: "custom",
+        message: "이미 존재하는 이름입니다.",
+        path: ["user_name"],
+        fatal: true,
+      });
+      return z.NEVER;
+    }
+  })
+  // data 구조분해할당도 가능
+  .superRefine(async ({ email }, ctx) => {
+    const user = await db.user.findUnique({
+      where: {
+        email,
+      },
+      select: {
+        id: true,
+      },
+    });
+    if (user) {
+      ctx.addIssue({
+        code: "custom",
+        message: "이미 존재하는 이메일입니다.",
+        path: ["email"],
+        fatal: true,
+      });
+      return z.NEVER;
+    }
   })
   .refine(checkPasswords, {
     message: "비밀번호를 똑같이 입력해주세요.",
@@ -98,6 +105,7 @@ export async function createAccount(prevState: any, formData: FormData) {
   const result = await formSchema.safeParseAsync(data);
 
   if (!result.success) {
+    console.log(result.error.flatten());
     return result.error.flatten();
   } else {
     // 모든 검증(~2번)이 끝난 후 실행(3번~)되어야 하는 곳

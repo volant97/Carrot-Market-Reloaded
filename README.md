@@ -478,3 +478,17 @@
   - 입력한 비밀번호 해시값이 일치하는지 확인 (else문에서 Zod인 것처럼 체크)
     - return으로 에러 문구 출력하는 방법
       - Zod 함수 밖에서도 작동 가능
+
+#### 8.6
+
+- superRefine
+  - 불필요한 DB 요청 줄이기
+    - 첫번째 input에서 error가 있다면 그 상태에서 검사 중단
+    - DB를 한 번만 호출
+  - object를 검사
+    - superRefine
+      - addIssue
+        - path : 어느 input에 해당하지는 명명
+        - fatal : true로 설정하여 중요도 높임
+      - return z.NEVER : 해당한다면 그 뒤의 검증 무시
+    - superRefine을 상단으로 올려야 제일 먼저 작동 됨
