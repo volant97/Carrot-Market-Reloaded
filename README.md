@@ -465,3 +465,16 @@
 - Recap
   - 불필요한 주석 제거
   - 콘솔로그 제거
+
+### 2024.08.13
+
+#### 8.5
+
+- Email Log In
+  - getSession 함수 생성
+  - // @ts-ignore 주석 삭제
+    - SessionContent 타입 작성하여 적용
+  - 입력한 email에 해당하는 유저 찾기 (Zod에서 체크)
+  - 입력한 비밀번호 해시값이 일치하는지 확인 (else문에서 Zod인 것처럼 체크)
+    - return으로 에러 문구 출력하는 방법
+      - Zod 함수 밖에서도 작동 가능

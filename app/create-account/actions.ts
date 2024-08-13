@@ -11,6 +11,7 @@ import bcrypt from "bcrypt";
 import { getIronSession } from "iron-session";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import getSession from "@/lib/session";
 
 const checkUsername = async (username: string) => !username.includes("tomato");
 
@@ -107,7 +108,7 @@ export async function createAccount(prevState: any, formData: FormData) {
     // 3. 비밀번호 해싱
     // 4. DB에 저장
     // 5. 로그인
-    // 6. '/home'으로 redirect
+    // 6. redirect("/profile")
 
     const hashedPasswoed = await bcrypt.hash(result.data.password, 12);
 
@@ -123,14 +124,10 @@ export async function createAccount(prevState: any, formData: FormData) {
       },
     });
 
-    const cookie = await getIronSession(cookies(), {
-      cookieName: "karrot",
-      password: process.env.COOKIE_PASSWORD!,
-    });
+    const session = await getSession();
 
-    // @ts-ignore
-    cookie.id = user.id;
-    await cookie.save();
+    session.id = user.id;
+    await session.save();
 
     redirect("/profile");
   }
