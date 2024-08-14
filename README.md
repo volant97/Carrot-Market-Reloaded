@@ -492,3 +492,9 @@
         - fatal : true로 설정하여 중요도 높임
       - return z.NEVER : 해당한다면 그 뒤의 검증 무시
     - superRefine을 상단으로 올려야 제일 먼저 작동 됨
+
+### 2024.08.14
+
+#### cp.0.0
+
+- crime puzzle 테스트 제작
