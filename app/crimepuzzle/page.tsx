@@ -1,4 +1,7 @@
-import React from "react";
+"use client";
+
+import CheckBtn from "@/components/cp/CheckBtn";
+import React, { useState } from "react";
 
 const box1 = "flex w-full border-2 border-white";
 const box2 = "flex w-full border-2 border-red-400";
@@ -12,11 +15,35 @@ const box0 =
 
 const center = "justify-center items-center";
 
-const arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const arr2 = [11, 12, 13, 14, 15, 16, 17, 18, 19];
-const arr3 = [21, 22, 23, 24, 25, 26, 27, 28, 29];
+export default function CPPage() {
+  const [arr1, setArr1] = useState<number[]>([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const [arr2, setArr2] = useState<number[]>([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const [arr3, setArr3] = useState<number[]>([0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
-export default function page() {
+  const increaseValue = (arrNum: number, index: number) => {
+    if (arrNum === 1) {
+      setArr1((prev) =>
+        prev.map((v, i) => {
+          return i === index ? (v === 2 ? (v = 0) : v + 1) : v;
+        })
+      );
+    }
+    if (arrNum === 2) {
+      setArr2((prev) =>
+        prev.map((v, i) => {
+          return i === index ? (v === 2 ? (v = 0) : v + 1) : v;
+        })
+      );
+    }
+    if (arrNum === 3) {
+      setArr3((prev) =>
+        prev.map((v, i) => {
+          return i === index ? (v === 2 ? (v = 0) : v + 1) : v;
+        })
+      );
+    }
+  };
+
   return (
     <div className="flex flex-col items-center gap-6 p-10">
       <h1 className="font-medium text-2xl">
@@ -64,18 +91,14 @@ export default function page() {
           {/* 5구역 */}
           <div className={`${box2_grid}`}>
             {arr1.map((v, i) => (
-              <div key={i} className={`${box0}`}>
-                {v}
-              </div>
+              <CheckBtn key={i} v={v} onClick={() => increaseValue(1, i)} />
             ))}
           </div>
 
           {/* 6구역 */}
           <div className={`${box2_grid}`}>
             {arr2.map((v, i) => (
-              <div key={i} className={`${box0}`}>
-                {v}
-              </div>
+              <CheckBtn key={i} v={v} onClick={() => increaseValue(2, i)} />
             ))}
           </div>
         </div>
@@ -96,9 +119,7 @@ export default function page() {
             {/* 8구역 */}
             <div className={`${box2_grid}`}>
               {arr3.map((v, i) => (
-                <div key={i} className={`${box0}`}>
-                  {v}
-                </div>
+                <CheckBtn key={i} v={v} onClick={() => increaseValue(3, i)} />
               ))}
             </div>
 
