@@ -42,13 +42,14 @@ export default function CPPage() {
   // };
 
   // 개선 된 함수
+  // 유니언 타입 사용하여 typescript 에러 방지
   const increaseValue = (arrNum: 1 | 2 | 3, index: number) => {
     // 배열과 상태 업데이트 함수를 매핑
     const stateMap = {
       1: { arr: arr1, setter: setArr1 },
       2: { arr: arr2, setter: setArr2 },
       3: { arr: arr3, setter: setArr3 },
-    } as const;
+    };
 
     // 선택된 배열과 상태 업데이트 함수 가져오기
     const { arr, setter } = stateMap[arrNum];

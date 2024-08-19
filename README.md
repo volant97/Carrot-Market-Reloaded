@@ -519,3 +519,8 @@
 
 - increaseValue 함수 리팩터링
   - 배열과 상태 업데이트 함수를 매핑
+
+#### cp.0.1.4
+
+- increaseValue 함수 리팩터링
+  - 유니언 타입 사용하여 typescript 에러 방지
