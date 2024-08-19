@@ -1,13 +1,13 @@
 "use client";
 
 import CheckBtn from "@/components/cp/CheckBtn";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const box1 = "flex w-full border-2 border-white";
 const box2 = "flex w-full border-2 border-red-400";
 const box2_col = "flex flex-col w-full border-2 border-red-400";
 const box2_grid =
-  "grid grid-rows-3 grid-flow-col w-full border-2 border-red-400";
+  "grid grid-cols-3 grid-flow-row w-full border-2 border-red-400";
 const box3 = "flex w-full border-2 border-red-700";
 const box3_col = "flex flex-col w-full border-2 border-red-700";
 const box0 =
@@ -19,6 +19,9 @@ export default function CPPage() {
   const [arr1, setArr1] = useState<number[]>([0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [arr2, setArr2] = useState<number[]>([0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [arr3, setArr3] = useState<number[]>([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const answer1 = [1, 1, 2, 0, 0, 0, 0, 0, 0];
+  const answer2 = [1, 0, 0, 0, 0, 0, 0, 0, 0];
+  const answer3 = [1, 0, 0, 0, 0, 0, 0, 0, 0];
 
   const increaseValue = (arrNum: number, index: number) => {
     if (arrNum === 1) {
@@ -41,6 +44,22 @@ export default function CPPage() {
           return i === index ? (v === 2 ? (v = 0) : v + 1) : v;
         })
       );
+    }
+  };
+
+  const submitBtnClickHandler = () => {
+    console.log(arr1, arr2, arr3);
+    // 비교 방법1) JSON.stringify(arr1) === JSON.stringify(answer) : 간결함, 다차원 배열 비교
+    // 비교 방법2) arr1.every((v, i) => v === answer[i]) : 성능, 정밀한 비교
+    if (
+      arr1.every((v, i) => v === answer1[i]) &&
+      arr2.every((v, i) => v === answer2[i]) &&
+      arr3.every((v, i) => v === answer3[i])
+    ) {
+      console.log(arr1);
+      console.log("정답");
+    } else {
+      console.log("오답");
     }
   };
 
@@ -124,7 +143,11 @@ export default function CPPage() {
             </div>
 
             {/* 9구역 */}
-            <div className={`${box2_col}`}></div>
+            <div className={`${box2_col} ${center}`}>
+              <button onClick={submitBtnClickHandler} className={`${box0}`}>
+                제출
+              </button>
+            </div>
           </div>
         </div>
       </div>

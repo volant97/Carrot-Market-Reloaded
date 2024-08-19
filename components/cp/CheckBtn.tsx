@@ -1,7 +1,7 @@
 import React from "react";
 
 const box0 =
-  "flex justify-center items-center w-full h-10 border-2 border-blue-700";
+  "flex justify-center items-center w-full h-10 border-2 border-blue-700 min-w-10";
 
 interface Props {
   v: number;
@@ -15,7 +15,7 @@ export default function CheckBtn({ v, onClick }: Props) {
   if (v === 2) text = "-";
 
   return (
-    <button className={`${box0} active:bg-blue-600 `} onClick={onClick}>
+    <button className={`${box0} active:bg-blue-600`} onClick={onClick}>
       {text}
     </button>
   );
