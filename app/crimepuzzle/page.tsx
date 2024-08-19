@@ -24,26 +24,19 @@ export default function CPPage() {
   const answer3 = [1, 0, 0, 0, 0, 0, 0, 0, 0];
 
   const increaseValue = (arrNum: number, index: number) => {
+    const callback = (prev: number[]) => {
+      return prev.map((v, i) => {
+        return i === index ? (v === 2 ? (v = 0) : v + 1) : v;
+      });
+    };
     if (arrNum === 1) {
-      setArr1((prev) =>
-        prev.map((v, i) => {
-          return i === index ? (v === 2 ? (v = 0) : v + 1) : v;
-        })
-      );
+      setArr1(callback);
     }
     if (arrNum === 2) {
-      setArr2((prev) =>
-        prev.map((v, i) => {
-          return i === index ? (v === 2 ? (v = 0) : v + 1) : v;
-        })
-      );
+      setArr2(callback);
     }
     if (arrNum === 3) {
-      setArr3((prev) =>
-        prev.map((v, i) => {
-          return i === index ? (v === 2 ? (v = 0) : v + 1) : v;
-        })
-      );
+      setArr3(callback);
     }
   };
 
@@ -144,7 +137,10 @@ export default function CPPage() {
 
             {/* 9구역 */}
             <div className={`${box2_col} ${center}`}>
-              <button onClick={submitBtnClickHandler} className={`${box0}`}>
+              <button
+                onClick={submitBtnClickHandler}
+                className={`${box0} hover:bg-blue-400`}
+              >
                 제출
               </button>
             </div>
