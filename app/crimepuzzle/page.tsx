@@ -23,21 +23,38 @@ export default function CPPage() {
   const answer2 = [1, 0, 0, 0, 0, 0, 0, 0, 0];
   const answer3 = [1, 0, 0, 0, 0, 0, 0, 0, 0];
 
-  const increaseValue = (arrNum: number, index: number) => {
-    const callback = (prev: number[]) => {
-      return prev.map((v, i) => {
-        return i === index ? (v === 2 ? (v = 0) : v + 1) : v;
-      });
-    };
-    if (arrNum === 1) {
-      setArr1(callback);
-    }
-    if (arrNum === 2) {
-      setArr2(callback);
-    }
-    if (arrNum === 3) {
-      setArr3(callback);
-    }
+  // 기존 함수
+  // const increaseValue = (arrNum: number, index: number) => {
+  //   const callback = (prev: number[]) => {
+  //     return prev.map((v, i) => {
+  //       return i === index ? (v === 2 ? (v = 0) : v + 1) : v;
+  //     });
+  //   };
+  //   if (arrNum === 1) {
+  //     setArr1(callback);
+  //   }
+  //   if (arrNum === 2) {
+  //     setArr2(callback);
+  //   }
+  //   if (arrNum === 3) {
+  //     setArr3(callback);
+  //   }
+  // };
+
+  // 개선 된 함수
+  const increaseValue = (arrNum: 1 | 2 | 3, index: number) => {
+    // 배열과 상태 업데이트 함수를 매핑
+    const stateMap = {
+      1: { arr: arr1, setter: setArr1 },
+      2: { arr: arr2, setter: setArr2 },
+      3: { arr: arr3, setter: setArr3 },
+    } as const;
+
+    // 선택된 배열과 상태 업데이트 함수 가져오기
+    const { arr, setter } = stateMap[arrNum];
+
+    // 상태 업데이트
+    setter(arr.map((v, i) => (i === index ? (v === 2 ? 0 : v + 1) : v)));
   };
 
   const submitBtnClickHandler = () => {
